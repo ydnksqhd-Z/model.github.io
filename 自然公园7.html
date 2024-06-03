@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/自然公园7.css" />
+    <title>Combined Page</title>
+    <style>
+        .empty-line {
+            height: 2rem; /* 设置空行的高度为20像素 */
+            width: 100%; /* 使空行充满整个宽度 */
+        }
+        .page1 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        .page2 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        #scrollButton {
+        display: block;
+        position: absolute;
+        bottom: 20px; /* 距离底部 20px */
+        left: 50%; /* 将左侧位置设置为页面宽度的一半 */
+        transform: translateX(-50%); /* 使用transform将元素水平居中 */
+}
+.content1 {
+      position: absolute; /* 设置绝对定位 */
+      top: 75rem; /* 距离父元素顶部的距离 */
+      right: 5rem; /* 距离父元素左侧的距离 */
+      width: 35rem; /* 设置宽度 */
+    }
+
+    .img1 {
+        position: absolute; /* 设置绝对定位 */
+        top: 70rem; /* 距离父元素顶部的距离 */
+        left: 6rem; /* 距离父元素左侧的距离 */
+        width: 60%; /* 设置宽度 */
+        width: 50rem;
+        height: 40rem;
+    }
+    /* 定义渐变 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* 应用渐变和动画到文字 */
+    .fadeInText {
+      animation: fadeIn 2s ease-in-out; /* 使用2秒的动画时间 */
+    }
+    </style>
+</head>
+<body>
+<div class="page1">
+    <div class="content">
+       <h1 class="fadeInText">挠力河国家级自然保护区</h1>
+       <h1 class="fadeInText">Naoli River National Nature Reserve</h1>
+    </div>
+    <div id="scrollButton" onclick="scrollToBottom()" >
+       <img src="images/下滑2.png" alt="滚动到底部" width="50" height="50" style="opacity: 0.8" />
+    </div>
+</div>
+
+<div class="page2">
+    <div class="empty-line"></div>  
+    <div class="content1">
+    <h1>黑龙江挠力河国家级自然保护区，地处三江平原腹地，成立于2002年，地跨佳木斯富锦市、双鸭山宝清县和饶河县。保护区前身是长林岛、雁窝岛、挠力河三个省级自然保护区和七里沁河一个总局级（地市级）自然保护区。保护区类型属于“自然生态系统类”中的“内陆湿地与水域生态系统类型”，国家特大型湿地保护区。总面积160601公顷。东西长165公里，最宽处13.5公里，最窄处4公里。</h1>
+    <h1>2023年11月30日，国家林业和草原局公布《陆生野生动物重要栖息地名录（第一批）》，黑龙江挠力河候鸟重要栖息地入选。挠力河国家级自然保护区主要保护对象是以水生和陆栖生物及其生境共同形成的湿地和水域生态系统。鸟类有大雁、绿头鸭、丹顶鹤、白鹭、苍鹭、罗纹鸭、红嘴鸥、东方白鹳等。</h1>
+    </div>
+    <img class="img1" src="images/挠力河2.png">
+</div>
+<script>
+    function scrollToBottom() {
+  var scrollHeight = document.body.scrollHeight;
+  var currentScroll = window.scrollY;
+  var timeInterval = 15; // 设置时间间隔为 20 毫秒
+  var distance = scrollHeight - currentScroll;
+  var speed = distance / 250; // 设置滚动速度
+
+  function scrollStep() {
+    if (window.scrollY < 940) {
+      window.scrollTo(0, window.scrollY + speed);
+      setTimeout(scrollStep, timeInterval);
+    }else{
+        var Button=document.getElementById('scrollButton');
+        if(Button){
+            Button.removeEventListener('click', scrollToBottom);
+        }
+    }
+  }
+  scrollStep();
+
+}
+</script>
+</body>
+</html>

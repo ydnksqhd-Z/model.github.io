@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/自然公园1.css" />
+    <title>Combined Page</title>
+    <style>
+        .empty-line {
+            height: 2rem; /* 设置空行的高度为20像素 */
+            width: 100%; /* 使空行充满整个宽度 */
+        }
+        .page1 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        .page2 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        #scrollButton {
+        display: block;
+        position: absolute;
+        bottom: 20px; /* 距离底部 20px */
+        left: 50%; /* 将左侧位置设置为页面宽度的一半 */
+        transform: translateX(-50%); /* 使用transform将元素水平居中 */
+}
+.content1 {
+      position: absolute; /* 设置绝对定位 */
+      top: 75rem; /* 距离父元素顶部的距离 */
+      right: 5rem; /* 距离父元素左侧的距离 */
+      width: 35rem; /* 设置宽度 */
+    }
+
+    .img1 {
+        position: absolute; /* 设置绝对定位 */
+        top: 70rem; /* 距离父元素顶部的距离 */
+        left: 6rem; /* 距离父元素左侧的距离 */
+        width: 60%; /* 设置宽度 */
+        width: 50rem;
+        height: 40rem;
+    }
+    /* 定义渐变 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* 应用渐变和动画到文字 */
+    .fadeInText {
+      animation: fadeIn 2s ease-in-out; /* 使用2秒的动画时间 */
+    }
+    </style>
+</head>
+<body>
+<div class="page1">
+    <div class="content">
+       <h1 class="fadeInText">北京野鸭湖自然保护区</h1>
+       <h1 class="fadeInText">Yeyahu National Wetland Park</h1>
+    </div>
+    <div id="scrollButton" onclick="scrollToBottom()" >
+       <img src="images/下滑2.png" alt="滚动到底部" width="50" height="50" style="opacity: 0.8" />
+    </div>
+</div>
+
+<div class="page2">
+    <div class="empty-line"></div>  
+    <div class="content1">
+    <h1>北京野鸭湖湿地自然保护区位于北京市延庆区西北部，属于华北平原向山西高原、内蒙古高原的过渡地带，是国际鸟类迁移路线“东亚—澳大利亚路线”的中转驿站。该区原为延庆盆地东部妫水河、蔡家河下游，1955年建成官厅水库，形成巨大的人工湖泊湿地。保护区处于水库中上游，沟岔纵横，库湾众多。保护区总面积为6873公顷，其中湿地面积达3939公顷，是北京最大的湿地自然保护区，也是唯一的湿地鸟类自然保护区。据统计野鸭湖湿地鸟种总数达280种，国家一级保护动物9种（黑鹳、东方白鹳、白头鹤、大鸨、金雕、白尾海雕、白肩雕、白鹤、遗鸥），国家二级保护动物40种。高等植物420种、鱼类40种、两栖类5种、兽类10种、昆虫类182种等。</h1>
+    <h1>野鸭湖湿地是北京地区鸟类的重要栖息地和华北地区迁徙鸟类重要的中转站。多年来，野鸭湖不断加强栖息地恢复、禽流感监控、日常巡护和鸟类救护工作力度。2009年，野鸭湖建立了远程无线高清监控系统，实现对主要鸟类栖息地的全方位监控，进一步提升了鸟类监测保护工作的整体能力和水平。</h1>
+    </div>
+    <img class="img1" src="images/野鸭湖1.png">
+</div>
+<script>
+    function scrollToBottom() {
+  var scrollHeight = document.body.scrollHeight;
+  var currentScroll = window.scrollY;
+  var timeInterval = 15; // 设置时间间隔为 20 毫秒
+  var distance = scrollHeight - currentScroll;
+  var speed = distance / 250; // 设置滚动速度
+
+  function scrollStep() {
+    if (window.scrollY < 940) {
+      window.scrollTo(0, window.scrollY + speed);
+      setTimeout(scrollStep, timeInterval);
+    }else{
+        var Button=document.getElementById('scrollButton');
+        if(Button){
+            Button.removeEventListener('click', scrollToBottom);
+        }
+    }
+  }
+  scrollStep();
+
+}
+</script>
+</body>
+</html>

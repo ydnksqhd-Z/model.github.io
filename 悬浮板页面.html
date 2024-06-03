@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/悬浮页面.css" />
+    <style>
+.img1 {
+        display: block;
+        position: absolute;
+        bottom:12rem;
+        right: 3rem; /* 将左侧位置设置为页面宽度的一半 */
+        transform: translateX(-50%); /* 使用transform将元素水平居中 */
+}
+.img2 {
+        display: block;
+        position: absolute;
+        bottom:12rem;
+        left: 3rem; /* 将左侧位置设置为页面宽度的一半 */
+        transform: translateX(-50%); /* 使用transform将元素水平居中 */
+}
+    </style>
+</head>
+<body>
+    <script>
+      var index=1;
+    </script>
+    <section>
+        <div class="container">
+          <div class="background-img">
+            <div class="box">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <div class="content content1">
+                <h2>My animated Border </h2>
+                <p><a>All our modules are designed to play nicely with responsive of course. At the end of the day it comes down to the theme you use - our code doesn't get in your way.</a></p>
+              </div>
+              <div class="content content2">
+                <h2>leo's animated Border </h2>
+                <p><a>All leo's modules are designed to play nicely with responsive of course. At the end of the day it comes down to the theme you use - our code doesn't get in your way.</a></p>
+              </div> 
+            </div>
+            <img class="img1" src="images/右滑2.png" alt="滚动到底部" width="50" height="50" style="opacity: 0.8" />
+            <img class="img2" src="images/左滑2.png" alt="滚动到底部" width="50" height="50" style="opacity: 0.8" />
+          </div>
+        </div>
+      </section>
+      <script>
+        var right=document.querySelector('.img1');
+        var box1=document.querySelector('.content1');
+        var box2=document.querySelector('.content2');
+        right.addEventListener('click', function() {
+    if (index === 1) {
+      box2.style.display = "block";
+      box1.style.display = 'none';
+      index = 2;
+    } else if (index === 2) {
+      box1.style.display = "block";
+      box2.style.display = 'none';
+      index = 1;
+    }
+  });
+      </script>
+</body>
+</html>

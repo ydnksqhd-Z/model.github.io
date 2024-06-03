@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Page</title>
+    <link rel="stylesheet" href="css/开始界面.css" />
+    <style>
+        body {
+            height: 50rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
+        #startButton {
+            font-size: 24px;
+            padding: 20px 40px;
+            border: 2px solid white;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            color: yellow;
+            margin-top: 10rem; /* 将按钮位置向下偏移 20px */
+            margin-right: 1rem;
+        }
+        #startButton:hover {
+            transform: scale(1.1);
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>中国鸟种分布及候鸟迁徙统计及介绍</h1>
+        <div class="showTime"></div>
+        <script>
+          var t = null;
+          t = setTimeout(time, 1000); //開始运行
+          function time() {
+            clearTimeout(t); //清除定时器
+            dt = new Date();
+            var y = dt.getFullYear();
+            var mt = dt.getMonth() + 1;
+            var day = dt.getDate();
+            var h = dt.getHours(); //获取时
+            var m = dt.getMinutes(); //获取分
+            var s = dt.getSeconds(); //获取秒
+            document.querySelector(".showTime").innerHTML =
+              "当前时间：" +
+              y +
+              "年" +
+              mt +
+              "月" +
+              day +
+              "-" +
+              h +
+              "时" +
+              m +
+              "分" +
+              s +
+              "秒";
+            t = setTimeout(time, 1000); //设定定时器，循环运行
+          }
+        </script>
+      </header>
+    <div id="startButton" onclick="redirectToSelectionPage()">click to start</div>
+    <script>
+        function redirectToSelectionPage() {
+            window.location.href = "开始界面1.html";
+        }
+    </script>
+</body>
+</html>

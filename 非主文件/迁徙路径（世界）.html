@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>世界地图迁徙</title>
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/world.js"></script>s
+    <style>
+        /* 设置地图容器的样式，使其居中显示 */
+        #main {
+            width: 800px;
+            height: 800px;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        function dealWithData(){
+            var geoCoordMap = {
+            雅酷特克塔雷克国家公园: [132.486909,71.74329],
+            塔河:	[124.70128,52.342418],
+            黑河:	[127.539799,50.252378],
+            松嫩平原:	[123.647154,47.214941],
+            盘锦:	[122.062426,41.130883],
+            长岛:	[120.744735,37.950818],
+            北戴河:	[119.515389,39.853857],
+            微山湖:	[117.282645,34.689589],
+            黄河三角洲:	[119.04043,37.787876],
+            大别山:	[116.414472,31.404752],
+            鄱阳湖:	[116.684921,29.139641],
+            库苏古尔湖:	[98.55202,52.341517],
+            赤峰达里诺尔湖:	[116.670532,43.410356],
+            北京密云水库:	[116.920432,40.523288],
+            天津北大港:	[117.401714,38.72681],
+            荣成:	[122.627326,37.207658],
+            本查干湖:  [99.17194,45.57528],
+            鄂尔多斯:	[109.781979,39.621153],
+            榆林:	[109.736731,38.294054],
+            三门峡:	[111.205668,34.775954],
+            洞庭湖:	[113.02153,29.126336],
+	        新乡:	[113.93216,35.315766],
+            鄱阳湖:	[116.684921,29.139641],
+            哈尔乌苏湖:	[91.741947,45.891393],
+            和静巴音布鲁克草原:	[84.140746,43.033796],
+            青海湖:	[100.202119,36.880899],
+            三江平原湿地:	[132.583397,47.694986],
+            齐齐哈尔扎龙国家级自然保护区:	[124.247733,47.202773],
+            兴凯湖:	[132.33596,45.371982],
+            特尔金白湖:	[99.67806,48.16139],
+            青海湖:	[100.202119,36.880899],
+            吉尔卡湖:	[85.38694,19.77083],
+            阿尔泰塔万博格多国家公园:	[88.7175,48.47139],
+            伊塞克湖:	[77.28278,42.39444],
+            庞坝湖:	[76.085848,35.854668],
+            奇特万国家森林公园:	[80.345226,30.409698],
+            凯奥拉德奥国家公园:	[77.52167,27.15944],
+            昆坦库拉姆鸟类保护区:	[76.306615,9.674207],
+        }
+            var data = [];
+            for (var key in geoCoordMap) {
+            data.push({ name: key, value: geoCoordMap[key] });}
+            return data;
+    }
+    </script>
+</head>
+<body>
+    <div id="main"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));
+        //设置背景
+      //加入点位
+      var dataValue = dealWithData();
+      var option = {
+        legend: {
+        data: ['东线', '中线', '西线'],
+    },
+        tooltip: {
+          show: true//显示提示
+        },
+        geo: {
+          map: "world",
+          center:[100,40],
+          zoom:5,
+          roam: false,// 一关闭拖拽
+          textStyle:{
+            color:'#52b9c7',
+          },
+          label: {
+            normal: {//省份名称显示
+              show: true,
+              fontSize: "10",
+              color: "white"
+            },
+            emphasis: {//高亮显示
+              show: true
+            }
+          },
+          itemStyle: {//图表元素样式
+            normal: {//正常状态下
+              areaColor: "#0d0059",//背景色
+              borderColor: "#389dff",//边框颜色
+              borderWidth: 1, //边框宽度
+              shadowBlur: 5,//阴影模糊效果
+              shadowOffsetY: 8,//阴影垂直偏移量
+              shadowOffsetX: 0,//阴影水平偏移量
+              shadowColor: "#01012a"//阴影颜色
+            },
+            emphasis: {//强调状态下
+              areaColor: "#184cff",
+              shadowOffsetX: 0,
+              shadowOffsetY: 0,
+              shadowBlur: 5,
+              borderWidth: 0,
+              shadowColor: "rgba(0, 0, 0, 0.5)"
+            }
+          }
+        },
+        series: [
+          //绘制线条
+          {
+            name:'东线',
+            type: 'lines',
+            zlevel: 2,
+            data: [
+{coords: [[132.486909,71.74329],[124.70128,52.342418]], lineStyle: { color: '#F3F705' } },
+                ]
+        },
+        {
+            name:'中线',
+            type: 'lines',
+            zlevel: 2,
+            data: [
+{ coords: [[132.583397,47.694986],[132.33596,45.371982]], lineStyle: { color: '#EC0A06' } },
+            ]
+        },
+        {
+            name:'西线',
+            type: 'lines',
+            zlevel: 2,
+            data: [
+{ coords: [[85.38694,19.77083],[76.306615,9.674207]], lineStyle: { color: '#07FB0E' } },
+            ]
+        }
+    ]
+    };
+    myChart.setOption(option);
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/自然公园5.css" />
+    <title>Combined Page</title>
+    <style>
+        .empty-line {
+            height: 2rem; /* 设置空行的高度为20像素 */
+            width: 100%; /* 使空行充满整个宽度 */
+        }
+        .page1 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        .page2 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        #scrollButton {
+        display: block;
+        position: absolute;
+        bottom: 20px; /* 距离底部 20px */
+        left: 50%; /* 将左侧位置设置为页面宽度的一半 */
+        transform: translateX(-50%); /* 使用transform将元素水平居中 */
+}
+.content1 {
+      position: absolute; /* 设置绝对定位 */
+      top: 75rem; /* 距离父元素顶部的距离 */
+      right: 5rem; /* 距离父元素左侧的距离 */
+      width: 35rem; /* 设置宽度 */
+    }
+
+    .img1 {
+        position: absolute; /* 设置绝对定位 */
+        top: 70rem; /* 距离父元素顶部的距离 */
+        left: 6rem; /* 距离父元素左侧的距离 */
+        width: 60%; /* 设置宽度 */
+        width: 50rem;
+        height: 40rem;
+    }
+    /* 定义渐变 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* 应用渐变和动画到文字 */
+    .fadeInText {
+      animation: fadeIn 2s ease-in-out; /* 使用2秒的动画时间 */
+    }
+    </style>
+</head>
+<body>
+<div class="page1">
+    <div class="content">
+       <h1 class="fadeInText">青海湖国家级自然保护区</h1>
+       <h1 class="fadeInText">Qinghai Lake National Nature Reserve</h1>
+    </div>
+    <div id="scrollButton" onclick="scrollToBottom()" >
+       <img src="images/下滑2.png" alt="滚动到底部" width="50" height="50" style="opacity: 0.8" />
+    </div>
+</div>
+
+<div class="page2">
+    <div class="empty-line"></div>  
+    <div class="content1">
+    <h1>青海湖国家级自然保护区位于青藏高原东北部，其范围包括青海湖整个水域及鸟类繁殖、栖息的岛屿、滩涂和湖岸湿地，地跨二州三县。
+      保护区始建于1975年，是中国最早被列入《关于特别是作为水禽栖息地的国际重要湿地公约》（拉姆萨尔公约）国际重要湿地名录的保护区。2023年11月30日，国家林业和草原局公布《陆生野生动物重要栖息地名录（第一批）》，青海青海湖普氏原羚及候鸟重要栖息地入选。</h1>
+    <h1>青海湖保护区及周边地区有鸟类189种，分属14目37科，青海湖地区鸟类种类相对周边其它区域丰富，鸟类种数占青海省鸟类总数的55%，其中候鸟种数占63.6%。每年在青海湖迁徙停留的候鸟有数十万只，青海湖又是中国境内夏候鸟繁殖数量最多种群最为集中的繁殖地，每年在此集中繁殖的棕头鸥、鱼鸥、斑头雁、鸬鹚四种大型水鸟数量在5.8万只以上。青海湖还是水禽的重要越冬地，每年有近4500只左右的大天鹅在此越冬。国家一级保护动物黑颈鹤在保护区湿地草甸中繁殖，数量达50余只。</h1>
+    </div>
+    <img class="img1" src="images/青海湖1.png">
+</div>
+<script>
+    function scrollToBottom() {
+  var scrollHeight = document.body.scrollHeight;
+  var currentScroll = window.scrollY;
+  var timeInterval = 15; // 设置时间间隔为 20 毫秒
+  var distance = scrollHeight - currentScroll;
+  var speed = distance / 250; // 设置滚动速度
+
+  function scrollStep() {
+    if (window.scrollY < 940) {
+      window.scrollTo(0, window.scrollY + speed);
+      setTimeout(scrollStep, timeInterval);
+    }else{
+        var Button=document.getElementById('scrollButton');
+        if(Button){
+            Button.removeEventListener('click', scrollToBottom);
+        }
+    }
+  }
+  scrollStep();
+
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/自然公园6.css" />
+    <title>Combined Page</title>
+    <style>
+        .empty-line {
+            height: 2rem; /* 设置空行的高度为20像素 */
+            width: 100%; /* 使空行充满整个宽度 */
+        }
+        .page1 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        .page2 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        #scrollButton {
+        display: block;
+        position: absolute;
+        bottom: 20px; /* 距离底部 20px */
+        left: 50%; /* 将左侧位置设置为页面宽度的一半 */
+        transform: translateX(-50%); /* 使用transform将元素水平居中 */
+}
+.content1 {
+      position: absolute; /* 设置绝对定位 */
+      top: 75rem; /* 距离父元素顶部的距离 */
+      right: 5rem; /* 距离父元素左侧的距离 */
+      width: 35rem; /* 设置宽度 */
+    }
+
+    .img1 {
+        position: absolute; /* 设置绝对定位 */
+        top: 70rem; /* 距离父元素顶部的距离 */
+        left: 6rem; /* 距离父元素左侧的距离 */
+        width: 60%; /* 设置宽度 */
+        width: 50rem;
+        height: 40rem;
+    }
+    /* 定义渐变 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* 应用渐变和动画到文字 */
+    .fadeInText {
+      animation: fadeIn 2s ease-in-out; /* 使用2秒的动画时间 */
+    }
+    </style>
+</head>
+<body>
+<div class="page1">
+    <div class="content">
+       <h1 class="fadeInText">内蒙古科尔沁国家级自然保护区</h1>
+       <h1 class="fadeInText">Horqin National Nature Reserve of Inner Mongolia</h1>
+    </div>
+    <div id="scrollButton" onclick="scrollToBottom()" >
+       <img src="images/下滑2.png" alt="滚动到底部" width="50" height="50" style="opacity: 0.8" />
+    </div>
+</div>
+
+<div class="page2">
+    <div class="empty-line"></div>  
+    <div class="content1">
+    <h1>内蒙古科尔沁国家级自然保护区位于内蒙古自治区兴安盟科尔沁右翼中旗的东部。保护区总面积119587公顷，保护区南北长约46公里，东西宽约44公里，科尔沁自然保护区涉及的行政区域包括科右中旗的新佳木苏木和高力板镇北部地区，是一个以保护科尔沁草原、蒙古黄榆、西伯利亚山杏疏林景观、鹤鹳类等珍禽及其栖息环境湿地为主的综合性自然保护区。</h1>
+    <h1>内蒙古科尔沁国家级自然保护区境内有鸟类17目42科225种，包括国家一级重点保护的鸟类有8种，有白鹳、黑鹳、丹顶鹤、白头鹤、白鹤、金雕、虎头海雕和大鸨8种，国家二级保护鸟类34种，列为国家保护的有益或者有重要经济、科学研究价值的鸟类有小鸊鷉、黑颈鸊鷉、凤头鸊鷉等163种，因此本区在保护鹤、鹳类等珍稀鸟类及其赖以生存的湿地环境的重要地位。两栖动物有1目4科7种；有爬行动物2目5科10种；分布有兽类6目15科43种。</h1>
+    </div>
+    <img class="img1" src="images/科尔沁1.png">
+</div>
+<script>
+    function scrollToBottom() {
+  var scrollHeight = document.body.scrollHeight;
+  var currentScroll = window.scrollY;
+  var timeInterval = 15; // 设置时间间隔为 20 毫秒
+  var distance = scrollHeight - currentScroll;
+  var speed = distance / 250; // 设置滚动速度
+
+  function scrollStep() {
+    if (window.scrollY < 940) {
+      window.scrollTo(0, window.scrollY + speed);
+      setTimeout(scrollStep, timeInterval);
+    }else{
+        var Button=document.getElementById('scrollButton');
+        if(Button){
+            Button.removeEventListener('click', scrollToBottom);
+        }
+    }
+  }
+  scrollStep();
+
+}
+</script>
+</body>
+</html>

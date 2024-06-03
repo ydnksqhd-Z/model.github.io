@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css" />
+    <title>Combined Page</title>
+    <style>
+        .empty-line {
+            height: 2rem; /* 设置空行的高度为20像素 */
+            width: 100%; /* 使空行充满整个宽度 */
+        }
+        .page1 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        .page2 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        #startButton {
+    display: block;
+    margin: 10rem auto 0; /* 设置顶部边距为10rem，左右边距自动调整，使按钮水平居中 */
+    font-size: 24px;
+    padding: 20px 40px;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    color: white;
+    width: 150px;
+    background-color: transparent;
+}
+        #startButton:hover {
+            transform: scale(1.1);
+            background-color: black;
+        }
+        #scrollButton {
+        display: block;
+        position: absolute;
+        bottom: 20px; /* 距离底部 20px */
+        left: 50%; /* 将左侧位置设置为页面宽度的一半 */
+        transform: translateX(-50%); /* 使用transform将元素水平居中 */
+}
+    </style>
+</head>
+<body>
+<div class="page1">
+    <div class="content">
+       <h1>中国鸟种分布及候鸟迁徙统计及介绍</h1>
+       <h1>“天际旅者——穿越季节的轨迹”</h1>
+       <h1>参赛团队：极客计划</h1>
+       <h1>指导教师：</h1>
+       <h1>中国地质大学（北京）</h1>
+       <h1>数据统计截至2024年4月</h1>
+    </div>
+    <div id="scrollButton" onclick="scrollToBottom()" >
+       <img src="images/下滑2.png" alt="滚动到底部" width="50" height="50" style="opacity: 0.8" />
+    </div>
+</div>
+
+<div class="page2">
+    <div class="empty-line"></div>  
+    <h1>引言：</h1>
+    <h1>在春风的召唤下，</h1>
+    <h1>候鸟跨越千山万水，</h1>
+    <h1>从南方的温暖怀抱，</h1>
+    <h1>向北迁徙，寻找重生的希望。</h1>
+    <div class="empty-line"></div>
+    <h1>它们在蓝天的指引下，</h1>
+    <h1>翱翔在无垠的天际，</h1>
+    <h1>每一次振翅，都是对自由的歌唱，</h1>
+    <h1>每一次飞跃，都是生命的赞扬。</h1>
+    <div class="empty-line"></div>
+    <h1>让我们跟随它们的足迹，</h1>
+    <h1>探索中国鸟种的奥秘，</h1>
+    <h1>记录每一次迁徙的统计，</h1>
+    <h1>介绍这份自然的礼记。</h1>
+    <div id="startButton" onclick="redirectToSelectionPage()">click to start</div>
+</div>
+<script>
+    function scrollToBottom() {
+  var scrollHeight = document.body.scrollHeight;
+  var currentScroll = window.scrollY;
+  var timeInterval = 15; // 设置时间间隔为 20 毫秒
+  var distance = scrollHeight - currentScroll;
+  var speed = distance / 250; // 设置滚动速度
+
+  function scrollStep() {
+    if (window.scrollY < 940) {
+      window.scrollTo(0, window.scrollY + speed);
+      setTimeout(scrollStep, timeInterval);
+    }else{
+        var Button=document.getElementById('scrollButton');
+        if(Button){
+            Button.removeEventListener('click', scrollToBottom);
+        }
+    }
+  }
+  scrollStep();
+
+}
+    /*
+    function scrollToBottom() {
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
+}*/
+    function redirectToSelectionPage() {
+        window.location.href = "开始界面.html";
+    }
+</script>
+</body>
+</html>

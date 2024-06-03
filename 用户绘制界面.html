@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width,initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var index=1;
+    </script>
+    <style>
+        button.active{
+            color:#fff;
+            background-color: orangered;
+        }
+    canvas {
+      background: url("./images/自然风景2.jpg");
+    }
+    </style>
+</head>
+<body>
+    <canvas id="c1" width="1650" height="750"></canvas>
+    <hr>
+    <button id="boldBtn" type="button">粗线条</button>
+    <button id="thinBtn" type="button">细线条</button>
+    <button id="bolder"  type="button">加粗</button>
+    <button id="thiner"  type="button">变细</button>
+    <button id="saveBtn" type="button">保存</button>
+    <input type="color"  name="" id="color" value="" />
+    <button id="clearBtn" type="button">橡皮擦</button>
+    <button id="changeBackground" type="button">更换背景</button>
+    <button id="nullBtn" type="button">清空画布</button>
+
+    <script>
+        //获取canvas画布和绘制上下文对象
+        var myCanvas=document.querySelector('#c1');
+        var ctx=myCanvas.getContext('2d');
+        var filepath2="https://ts1.cn.mm.bing.net/th/id/R-C.8295692f85143e7fc839ec3e89ce21ce?rik=Fsn5IWCgbfx%2bHw&riu=http%3a%2f%2fpic.bizhi360.com%2fbbpic%2f14%2f1114.jpg&ehk=BjC38K3ZhBav5yJTCqgt%2bAaJRF6z4AZh2b375VO1H6g%3d&risl=&pid=ImgRaw&r=0";
+        var filepath3="https://ts1.cn.mm.bing.net/th/id/R-C.6315501c36ce8af2245885606381e596?rik=BoLTa6LGOdHb0A&riu=http%3a%2f%2fpic.bizhi360.com%2fbbpic%2f57%2f6757.jpg&ehk=axqUeQIdIaWJbHOKP3KG8pkAuZXXGa5XfwG%2bgzQfPCk%3d&risl=&pid=ImgRaw&r=0";
+        var filepath5="https://ts1.cn.mm.bing.net/th/id/R-C.b3c68ef9de1109b0d020e22bc2aacf40?rik=H9R9l7dvJP9Kbw&riu=http%3a%2f%2fpic.bizhi360.com%2fbbpic%2f89%2f8989.jpg&ehk=VyIdtYriq3lSqrO3x0MHd5IyxYaw8jZUCKZbHNtvewU%3d&risl=&pid=ImgRaw&r=0";
+//        var myCanvas1=document.querySelector('#c1');
+//        var ctx1=myCanvas1.getContext('2d');
+        //连接处圆润
+        ctx.lineJoin='round';
+        //开端和结束段圆润
+        ctx.lineCap='round';
+        //画笔
+        var boldBtn=document.querySelector('#boldBtn');
+        var thinBtn=document.querySelector('#thinBtn');
+        var inputColor=document.querySelector('#color');
+        var bolder=document.querySelector('#bolder');
+        var thiner=document.querySelector('#thiner');
+        //保存签名
+        //var saveBtn=document.querySelector('#saveBtn');
+        //橡皮擦
+        var clearBtn=document.querySelector('#clearBtn');
+        //清空按钮
+        var nullBtn=document.querySelector('#nullBtn');
+        var changeBackground=document.querySelector('#changeBackground');
+
+        //设置控制事件
+        var isDraw=false;
+        myCanvas.onmousedown=function(){
+            isDraw=true;
+            ctx.beginPath();
+            var x=event.pageX-myCanvas.offsetLeft;
+            var y=event.pageY-myCanvas.offsetTop;
+            ctx.moveTo(x,y);
+        }
+        myCanvas.onmouseleave=function(){
+            isDraw=false;
+            ctx.closePath();
+        }
+        myCanvas.onmouseup=function(){
+            isDraw=false;
+            ctx.closePath();
+        }
+        myCanvas.onmousemove=function(){
+            if(isDraw){
+                var x=event.pageX-myCanvas.offsetLeft;
+                var y=event.pageY-myCanvas.offsetTop;
+                ctx.lineTo(x,y);
+                ctx.stroke();
+            }
+        }
+        //设置按钮
+        boldBtn.onclick=function(){
+            ctx.globalCompositeOperation='source-over';
+            ctx.lineWidth=20;
+            boldBtn.classList.add('active');
+            thinBtn.classList.remove('active');
+            clearBtn.classList.remove('active');
+        }
+
+        thinBtn.onclick=function(){
+            ctx.globalCompositeOperation='source-over';
+            ctx.lineWidth=0.5;
+            boldBtn.classList.remove('active');
+            thinBtn.classList.add('active');
+            clearBtn.classList.remove('active');
+        }
+        bolder.onclick=function(){
+            ctx.lineWidth=ctx.lineWidth+1;
+            boldBtn.classList.remove('active');
+            thinBtn.classList.remove('active');
+            clearBtn.classList.remove('active');
+        }
+        thiner.onclick=function(){
+            ctx.lineWidth-=1;
+            boldBtn.classList.remove('active');
+            thinBtn.classList.remove('active');
+            clearBtn.classList.remove('active');
+        }
+
+        changeBackground.onclick=function(){
+            //更新界面
+            if(index==1){
+            myCanvas.style.backgroundImage="url('./images/自然风景3.jpg')";
+            index=2;
+        }
+            else if(index==2){
+                myCanvas.style.backgroundImage="url('./images/自然风景5.jpg')";
+                index=3;
+            }
+            else if(index==3){
+                myCanvas.style.backgroundImage="url('./images/自然风景2.jpg')";
+                index=1;
+            }
+        }
+
+        clearBtn.onclick=function(){
+            ctx.globalCompositeOperation='destination-out';
+            ctx.lineWidth=30;
+            boldBtn.classList.remove('active');
+            thinBtn.classList.remove('active');
+            clearBtn.classList.add('active');
+        }
+        nullBtn.onclick=function(){
+            ctx.clearRect(0,0,1800,800);
+            if(index==2){
+                myCanvas.style.backgroundImage="url('./images/自然风景3.jpg')";
+            }
+            else if(index==3){
+                myCanvas.style.backgroundImage="url('./images/自然风景5.jpg')";
+            }
+            else if(index==1){
+                myCanvas.style.backgroundImage="url('./images/自然风景2.jpg')";
+            }
+        }
+        saveBtn.onclick = function () {
+            //声明图片信息  
+            var backgroundImage = new Image();
+            switch(index){
+                case 1:backgroundImage.src =  filepath2;
+                break;
+                case 2:backgroundImage.src =  filepath3;
+                break;
+                case 3:backgroundImage.src =  filepath5;
+                break;
+            }
+            backgroundImage.crossOrigin = "Anonymous";
+            //创建临时变量
+            var tempCanvas = document.createElement('canvas'); // 创建临时画布
+            var tempCtx = tempCanvas.getContext('2d'); // 获取临时画布的 2D 绘图上下文
+            tempCanvas.width = myCanvas.width;
+            tempCanvas.height = myCanvas.height;
+            //
+            backgroundImage.onload=function(){
+               tempCtx.drawImage(backgroundImage,0,0,backgroundImage.width,backgroundImage.height);
+               tempCtx.drawImage(myCanvas,0,0);
+               var urlData=tempCanvas.toDataURL();
+               var downloadA = document.createElement('a');
+               downloadA.setAttribute('download','canvas_image.jpg');
+               downloadA.href=urlData;
+               downloadA.click();
+            }
+            //ctx.clearRect(0,0,1800,800);
+            //ctx.drawImage(myCanvas1,0,0);
+        };
+        inputColor.onchange = function(){
+            ctx.strokeStyle=inputColor.value;
+        }
+    </script>
+</body>
+</html>

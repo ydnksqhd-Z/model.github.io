@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/迁徙路线展示.css" />
+    <style>
+			li {
+				list-style: none;
+			}
+
+			.btnClass {
+				padding: 0 12px;
+				margin: 0;
+				background-color: rgba(167, 92, 92, 1);
+				float: left;
+				color: white;
+			}
+
+			.btnClass:hover {
+				cursor: pointer;
+			}
+
+			.colorBtn {
+				margin-left: 1.875rem;
+			}
+      .paragraph-spacing {
+        margin-bottom: .1875rem; /* 在段落下方添加20像素的外边距 */
+    }
+		</style>
+  </head>
+
+<body>
+    <header>
+      <h1>中国鸟类迁徙可视化展示</h1>
+      <div class="showTime"></div>
+      <script>
+        var t = null;
+        t = setTimeout(time, 1000); //開始运行
+        function time() {
+          clearTimeout(t); //清除定时器
+          dt = new Date();
+          var y = dt.getFullYear();
+          var mt = dt.getMonth() + 1;
+          var day = dt.getDate();
+          var h = dt.getHours(); //获取时
+          var m = dt.getMinutes(); //获取分
+          var s = dt.getSeconds(); //获取秒
+          document.querySelector(".showTime").innerHTML =
+            "当前时间：" +
+            y +
+            "年" +
+            mt +
+            "月" +
+            day +
+            "-" +
+            h +
+            "时" +
+            m +
+            "分" +
+            s +
+            "秒";
+          t = setTimeout(time, 1000); //设定定时器，循环运行
+        }
+      </script>
+    </header>
+    <section class="mainbox">
+      <div class="column">
+        <div class="scroll-box">
+          <div class="scroll-content">
+              <p class="paragraph-spacing"></p>
+              <p>黑鹳  迁徙鸟类（仅在西班牙为留鸟）  青海   我国一级保护动物   约1000只</p>
+              <img src="images/勺嘴鹬.png" alt="黑鹳图片" style="width: 200px; height: auto;">
+              <p>黑鹳（学名：Ciconia nigra）是一种体态优美，体色鲜明，活动敏捷，性情机警的大型涉禽。成鸟的体长为1-1.2米，体重2-3千克；嘴长而粗壮，头、颈、脚均甚长，嘴和脚红色。</p>
+              <p class="paragraph-spacing"></p>
+              <p>朱鹮  迁徙鸟类   陕西南部、河南、浙江等地   濒危    约4400只</p>
+              <img src="images/朱鹮.png" alt="黑鹳图片" style="width: 200px; height: auto;">
+              <p>朱鹮（学名：Nipponia nippon）古称朱鹭、红朱鹭，朱鹮系东亚特有种。中等体型，体羽白色，后枕部有长的柳叶形羽冠，额至面颊部皮肤裸露，呈鲜红色。</p>
+              <p class="paragraph-spacing"></p>
+              <p>黄腹角雉  留鸟  浙江（主要）、福建、广东、湖南、江西   国家一级重点保护动物   约4000只</p>
+              <img src="images/勺嘴鹬2.jpg" alt="黑鹳图片" style="width: 200px; height: auto;">
+              <p>黄腹角雉（学名：Tragopan caboti），别名角鸡、吐绶鸟，全长约50（雌）～65（雄）厘米。雄鸟上体栗褐色，满布具黑缘的淡黄色圆斑。</p>
+          </div>
+        </div>
+        <div class="ball">
+          <h2> 珍惜候鸟数量变化图</h2>
+          <div class="chart"></div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="map">
+          <div class="chart"></div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="line">
+          <h2>中国候鸟种类三线历年数量</h2>
+          <div class="chart"></div>
+        </div>
+        <div class="bar">
+          <h2>中国候鸟栖息地三线比例</h2>
+          <div class="chart"></div>
+        </div>
+      </div>
+    </section>
+    <script src="js/flexible.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/world.js"></script>
+    <script src="js/china.js"></script>
+    <script src="js/myMap1.js"></script>
+    <script src="js/index.js"></script>
+
+    
+  </body>
+</html>

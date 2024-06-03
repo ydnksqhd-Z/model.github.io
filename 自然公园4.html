@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/自然公园4.css" />
+    <title>Combined Page</title>
+    <style>
+        .empty-line {
+            height: 2rem; /* 设置空行的高度为20像素 */
+            width: 100%; /* 使空行充满整个宽度 */
+        }
+        .page1 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        .page2 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        #scrollButton {
+        display: block;
+        position: absolute;
+        bottom: 20px; /* 距离底部 20px */
+        left: 50%; /* 将左侧位置设置为页面宽度的一半 */
+        transform: translateX(-50%); /* 使用transform将元素水平居中 */
+}
+.content1 {
+      position: absolute; /* 设置绝对定位 */
+      top: 75rem; /* 距离父元素顶部的距离 */
+      right: 5rem; /* 距离父元素左侧的距离 */
+      width: 35rem; /* 设置宽度 */
+    }
+
+    .img1 {
+        position: absolute; /* 设置绝对定位 */
+        top: 70rem; /* 距离父元素顶部的距离 */
+        left: 6rem; /* 距离父元素左侧的距离 */
+        width: 60%; /* 设置宽度 */
+        width: 50rem;
+        height: 40rem;
+    }
+    /* 定义渐变 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* 应用渐变和动画到文字 */
+    .fadeInText {
+      animation: fadeIn 2s ease-in-out; /* 使用2秒的动画时间 */
+    }
+    </style>
+</head>
+<body>
+<div class="page1">
+    <div class="content">
+       <h1 class="fadeInText">湖南南洞庭湖湿地和水禽自然保护区</h1>
+       <h1 class="fadeInText">Hunan South Dongting Lake wetland and waterfowl nature reserve</h1>
+    </div>
+    <div id="scrollButton" onclick="scrollToBottom()" >
+       <img src="images/下滑2.png" alt="滚动到底部" width="50" height="50" style="opacity: 0.8" />
+    </div>
+</div>
+
+<div class="page2">
+    <div class="empty-line"></div>  
+    <div class="content1">
+    <h1>湖南洞庭湖位于中国第一大淡水湖泊——洞庭湖西南，面积1680平方公里。已被国家列为“湿地和水禽自然保护区”，南洞庭湖是一座大自然的迷宫，生态环境优良的湖泊湿地，浩渺无垠的水域，翠绿浑圆的丘岗山地，风情万种的湖汊半岛，生活着多种珍稀濒危水禽和其它野生植物。</h1>
+    <h1>保护区内鸟类资源极其丰富，据调查记录表明，本区有鸟类16目43科164种，其中鸭科30种，鹬科19种，鹭科14种，鹰科6种，隼科4种，雉科3种，雀科4种，秧鸡科9种，杜鹃科4种，翠鸟科4种，反嘴鹬科3种，伯劳科3种，鸦科6种。据专家测算，在此越冬的候鸟有1000万只左右，国家重点保护的鸟类有白鹳805只，黑鹳300只，白头鹤200只，白鹤400只，白琵鹭1000多只，大鸨30只，白忱鹤400只，天鹅400多只，灰鹤1000只，中华秋沙鸭20多只，白额雁30000只，豆雁35000只。</h1>
+    </div>
+    <img class="img1" src="images/洞庭湖3.png">
+</div>
+<script>
+    function scrollToBottom() {
+  var scrollHeight = document.body.scrollHeight;
+  var currentScroll = window.scrollY;
+  var timeInterval = 15; // 设置时间间隔为 20 毫秒
+  var distance = scrollHeight - currentScroll;
+  var speed = distance / 250; // 设置滚动速度
+
+  function scrollStep() {
+    if (window.scrollY < 940) {
+      window.scrollTo(0, window.scrollY + speed);
+      setTimeout(scrollStep, timeInterval);
+    }else{
+        var Button=document.getElementById('scrollButton');
+        if(Button){
+            Button.removeEventListener('click', scrollToBottom);
+        }
+    }
+  }
+  scrollStep();
+
+}
+</script>
+</body>
+</html>

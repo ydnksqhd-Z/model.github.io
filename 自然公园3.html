@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/自然公园3.css" />
+    <title>Combined Page</title>
+    <style>
+        .empty-line {
+            height: 2rem; /* 设置空行的高度为20像素 */
+            width: 100%; /* 使空行充满整个宽度 */
+        }
+        .page1 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        .page2 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        #scrollButton {
+        display: block;
+        position: absolute;
+        bottom: 20px; /* 距离底部 20px */
+        left: 50%; /* 将左侧位置设置为页面宽度的一半 */
+        transform: translateX(-50%); /* 使用transform将元素水平居中 */
+}
+.content1 {
+      position: absolute; /* 设置绝对定位 */
+      top: 75rem; /* 距离父元素顶部的距离 */
+      right: 5rem; /* 距离父元素左侧的距离 */
+      width: 35rem; /* 设置宽度 */
+    }
+
+    .img1 {
+        position: absolute; /* 设置绝对定位 */
+        top: 70rem; /* 距离父元素顶部的距离 */
+        left: 6rem; /* 距离父元素左侧的距离 */
+        width: 60%; /* 设置宽度 */
+        width: 50rem;
+        height: 40rem;
+    }
+    /* 定义渐变 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* 应用渐变和动画到文字 */
+    .fadeInText {
+      animation: fadeIn 2s ease-in-out; /* 使用2秒的动画时间 */
+    }
+    </style>
+</head>
+<body>
+<div class="page1">
+    <div class="content">
+       <h1 class="fadeInText">山东黄河三角洲国家自然保护区</h1>
+       <h1 class="fadeInText">Shandong Yellow River Delta national Nature reserve</h1>
+    </div>
+    <div id="scrollButton" onclick="scrollToBottom()" >
+       <img src="images/下滑2.png" alt="滚动到底部" width="50" height="50" style="opacity: 0.8" />
+    </div>
+</div>
+
+<div class="page2">
+    <div class="empty-line"></div>  
+    <div class="content1">
+    <h1>山东黄河三角洲国家级自然保护区以保护新生湿地生态系统和珍稀濒危鸟类为主的湿地类型自然保护区。地处渤海之滨，东营市境内，新、老黄河入海口两侧，1992年经国务院批准建立的国家级自然保护区，设一千二、黄河口、大汶流三个管理站，总面积15.3万公顷，其中陆地面积 82700公顷，潮间带面积38250公顷，低潮时负3米浅海面积32050公顷。</h1>
+    <h1>野鸭湖湿地是北京地区鸟类的重要栖息地和华北地区迁徙鸟类重要的中转站。多年来，野鸭湖不断加强栖息地恢复、禽流感监控、日常巡护和鸟类救护工作力度。2009年，野鸭湖建立了远程无线高清监控系统，实现对主要鸟类栖息地的全方位监控，进一步提升了鸟类监测保护工作的整体能力和水平。2013年10月24日，在第三届中国湿地文化节暨东营国际湿地保护交流会议上，国际湿地公约组织负责人宣布，经国际湿地公约组织最新确定，包括山东黄河三角洲国家级自然保护区在内，中国的五个国家级自然保护区被正式列入国际重要湿地名录。2023年11月30日，国家林业和草原局公布《陆生野生动物重要栖息地名录（第一批）》，山东东营黄河三角洲候鸟重要栖息地入选。</h1>
+    </div>
+    <img class="img1" src="images/黄河三角洲1.png">
+</div>
+<script>
+    function scrollToBottom() {
+  var scrollHeight = document.body.scrollHeight;
+  var currentScroll = window.scrollY;
+  var timeInterval = 15; // 设置时间间隔为 20 毫秒
+  var distance = scrollHeight - currentScroll;
+  var speed = distance / 250; // 设置滚动速度
+
+  function scrollStep() {
+    if (window.scrollY < 940) {
+      window.scrollTo(0, window.scrollY + speed);
+      setTimeout(scrollStep, timeInterval);
+    }else{
+        var Button=document.getElementById('scrollButton');
+        if(Button){
+            Button.removeEventListener('click', scrollToBottom);
+        }
+    }
+  }
+  scrollStep();
+
+}
+</script>
+</body>
+</html>

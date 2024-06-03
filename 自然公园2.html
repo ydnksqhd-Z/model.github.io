@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/自然公园2.css" />
+    <title>Combined Page</title>
+    <style>
+        .empty-line {
+            height: 2rem; /* 设置空行的高度为20像素 */
+            width: 100%; /* 使空行充满整个宽度 */
+        }
+        .page1 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        .page2 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        #scrollButton {
+        display: block;
+        position: absolute;
+        bottom: 20px; /* 距离底部 20px */
+        left: 50%; /* 将左侧位置设置为页面宽度的一半 */
+        transform: translateX(-50%); /* 使用transform将元素水平居中 */
+}
+.content1 {
+      position: absolute; /* 设置绝对定位 */
+      top: 75rem; /* 距离父元素顶部的距离 */
+      right: 5rem; /* 距离父元素左侧的距离 */
+      width: 35rem; /* 设置宽度 */
+    }
+
+    .img1 {
+        position: absolute; /* 设置绝对定位 */
+        top: 70rem; /* 距离父元素顶部的距离 */
+        left: 6rem; /* 距离父元素左侧的距离 */
+        width: 60%; /* 设置宽度 */
+        width: 50rem;
+        height: 40rem;
+    }
+    /* 定义渐变 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* 应用渐变和动画到文字 */
+    .fadeInText {
+      animation: fadeIn 2s ease-in-out; /* 使用2秒的动画时间 */
+    }
+    </style>
+</head>
+<body>
+<div class="page1">
+    <div class="content">
+       <h1 class="fadeInText">江西鄱阳湖国家级自然保护区</h1>
+       <h1 class="fadeInText">Jiangxi Poyang Lake National Nature Reserve</h1>
+    </div>
+    <div id="scrollButton" onclick="scrollToBottom()" >
+       <img src="images/下滑2.png" alt="滚动到底部" width="50" height="50" style="opacity: 0.8" />
+    </div>
+</div>
+
+<div class="page2">
+    <div class="empty-line"></div>  
+    <div class="content1">
+    <h1>江西鄱阳湖国家级自然保护区（简称鄱阳湖保护区）位于江西省北部。是保护野生动物类型的自然保护区，主要保护对象是白鹤等珍稀候鸟及其越冬地。保护区属内陆型湿地，主要湿地类型包括湖泊、永久性河流、时令湖和永久性淡水草本沼泽、泡沼。 </h1>
+    <h1>2002 年加入了中国生物圈保护区网络；2006 年加入了东亚—澳大利西亚鸻形目鸟类保护网络。在第十一届世界生命湖泊大会上被全球自然基金（GNF）授予“世界生命湖泊最佳保护实践奖”，被国家林业局确定为“全国自然保护区示范单位”。
+        2022年10月20日，江西鄱阳湖国家级自然保护区管理局沙湖站、庐山市公安局蛟塘派出所联合发布《关于禁止未经批准进入江西鄱阳湖国家级自然保护区的告知书》，未经批准禁止进入鄱阳湖国家级自然保护区。
+        2023年11月30日，国家林业和草原局公布《陆生野生动物重要栖息地名录（第一批）》，江西鄱阳湖湿地候鸟重要栖息地入选。</h1>
+    <h1>保护区现有鸟类310种，隶属于17目55科，其中国家一级保护动物10种，二级保护动物40种，属于中日候鸟保护协定的鸟类有153种，占该协定中鸟类总数227种的67.4%；属于中澳候鸟保护协定的鸟类有47种，占该协中鸟类总数81种的58%。</h1>    
+    </div>
+    <img class="img1" src="images/鄱阳湖3.png">
+</div>
+<script>
+    function scrollToBottom() {
+  var scrollHeight = document.body.scrollHeight;
+  var currentScroll = window.scrollY;
+  var timeInterval = 15; // 设置时间间隔为 20 毫秒
+  var distance = scrollHeight - currentScroll;
+  var speed = distance / 250; // 设置滚动速度
+
+  function scrollStep() {
+    if (window.scrollY < 940) {
+      window.scrollTo(0, window.scrollY + speed);
+      setTimeout(scrollStep, timeInterval);
+    }else{
+        var Button=document.getElementById('scrollButton');
+        if(Button){
+            Button.removeEventListener('click', scrollToBottom);
+        }
+    }
+  }
+  scrollStep();
+
+}
+</script>
+</body>
+</html>

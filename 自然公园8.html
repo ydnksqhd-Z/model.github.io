@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/自然公园8.css" />
+    <title>Combined Page</title>
+    <style>
+        .empty-line {
+            height: 2rem; /* 设置空行的高度为20像素 */
+            width: 100%; /* 使空行充满整个宽度 */
+        }
+        .page1 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        .page2 {
+            height: 100vh; /* 设置每个页面的高度为视口高度，使其占据整个屏幕 */
+            overflow-y: scroll; /* 启用垂直滚动条 */
+            scroll-behavior: smooth; /* 平滑滚动效果 */
+        }
+        #scrollButton {
+        display: block;
+        position: absolute;
+        bottom: 20px; /* 距离底部 20px */
+        left: 50%; /* 将左侧位置设置为页面宽度的一半 */
+        transform: translateX(-50%); /* 使用transform将元素水平居中 */
+}
+.content1 {
+      position: absolute; /* 设置绝对定位 */
+      top: 75rem; /* 距离父元素顶部的距离 */
+      right: 5rem; /* 距离父元素左侧的距离 */
+      width: 35rem; /* 设置宽度 */
+    }
+
+    .img1 {
+        position: absolute; /* 设置绝对定位 */
+        top: 70rem; /* 距离父元素顶部的距离 */
+        left: 6rem; /* 距离父元素左侧的距离 */
+        width: 60%; /* 设置宽度 */
+        width: 50rem;
+        height: 40rem;
+    }
+    /* 定义渐变 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* 应用渐变和动画到文字 */
+    .fadeInText {
+      animation: fadeIn 2s ease-in-out; /* 使用2秒的动画时间 */
+    }
+    </style>
+</head>
+<body>
+<div class="page1">
+    <div class="content">
+       <h1 class="fadeInText">鄂尔多斯遗鸥国家级自然保护区</h1>
+       <h1 class="fadeInText">Erdos Gull National Nature Reserve</h1>
+    </div>
+    <div id="scrollButton" onclick="scrollToBottom()" >
+       <img src="images/下滑2.png" alt="滚动到底部" width="50" height="50" style="opacity: 0.8" />
+    </div>
+</div>
+
+<div class="page2">
+    <div class="empty-line"></div>  
+    <div class="content1">
+    <h1>鄂尔多斯遗鸥国家级自然保护区地处内蒙古鄂尔多斯市中部，位于东胜市和伊金霍洛旗境内，东经109°14′～109°23′，北纬33°25′～34°00′之间，总面积为14770公顷。保护区建立于1998年，2001年晋升为国家级自然保护区，属于高原内陆湿地生态类型自然保护区，主要保护对象是遗鸥繁殖地及内陆湖泊。2002年被《国际湿地公约》执委会评为全球第1148号国际重要湿地，这也是全球范围内第一个以保护遗鸥及其栖息地湿地生境为主旨的国际重要湿地。</h1>
+    <h1>鄂尔多斯遗鸥国家级自然保护区是遗鸥鄂尔多斯种群最集中的分布区和最主要的繁殖地。鄂尔多斯遗鸥国家级自然保护区主要保护对象是以遗鸥为主的83种鸟类繁殖地及内陆湖泊。遗鸥是保护区内主要保护对象。遗鸥属鸥形目鸥科，体长430～460毫米。虹膜黑色，眼周白色，嘴和脚暗红色。栖于草原、沙漠和半荒漠的湖泊和沼泽地。</h1>
+    <h1>截至2011年，鄂尔多斯遗鸥国家级自然保护区有湿地鸟类83种，属国家一级保护物种有遗鸥、东方白鹳、白尾海雕，属国家二级保护的物种有角鸊鷉、赤颈鸊鷉、白琵鹭、大天鹅、鸢、大鵟、红脚隼、蓑羽鹤、苍鹰、黑浮鸥等10多种。</h1>
+    </div>
+    <img class="img1" src="images/鄂尔多斯3.png">
+</div>
+<script>
+    function scrollToBottom() {
+  var scrollHeight = document.body.scrollHeight;
+  var currentScroll = window.scrollY;
+  var timeInterval = 15; // 设置时间间隔为 20 毫秒
+  var distance = scrollHeight - currentScroll;
+  var speed = distance / 250; // 设置滚动速度
+
+  function scrollStep() {
+    if (window.scrollY < 940) {
+      window.scrollTo(0, window.scrollY + speed);
+      setTimeout(scrollStep, timeInterval);
+    }else{
+        var Button=document.getElementById('scrollButton');
+        if(Button){
+            Button.removeEventListener('click', scrollToBottom);
+        }
+    }
+  }
+  scrollStep();
+
+}
+</script>
+</body>
+</html>

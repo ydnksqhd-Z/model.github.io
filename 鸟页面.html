@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/鸟页面.css"/>
+    <style>
+      .img1 {
+        display: block;
+        position: absolute;
+        bottom:15rem;
+        right: 0rem; /* 将左侧位置设置为页面宽度的一半 */
+        transform: translateX(-50%); /* 使用transform将元素水平居中 */
+}
+.img2 {
+        display: block;
+        position: absolute;
+        bottom:15rem;
+        left: 3rem; /* 将左侧位置设置为页面宽度的一半 */
+        transform: translateX(-50%); /* 使用transform将元素水平居中 */
+}
+.chatbox{
+  position: absolute;
+  top:0rem;
+  left:27rem;
+}
+.text{
+  position: absolute;
+  top:5rem;
+  left:30rem;
+  font-size: 20px;
+}
+    </style>
+</head>
+<body>
+    <script>
+      var index=3;
+    </script>
+    <section class="mainbox">
+      <div class="container">
+        <img class="chatbox" src="images/对话框.png">
+        <p class="text">尝试点击我</p>
+        <img class="bird" src="images/鸟2.png" width="552" height="724.5" alt="planets" usemap="#plantmap"/>
+        <map name="plantmap">
+          <!-- area 定义图像映射中的区域 -->
+          <area shape="rect" coords="253,103.5,345,138" alt="喙" class="area1"/>
+          <area shape="circle" coords="287.5,287.5,80.5" alt="翅膀" class="area2"/>
+          <area shape="circle" coords="356.5,494.5,34.5" alt="足" class="area3"/>
+          <area shape="circle" coords="281.75,557.75,34.5" alt="足" class="area4"/>
+          <area shape="rect" coords="299,138,437,195.5" alt="胸" class="area5"/>
+          <area shape="rect" coords="368,138,437,402.5" alt="胸" class="area6"/>
+          <area shape="rect" coords="92,494.5,218.5,701.5" alt="尾" class="area7"/>
+        </map>
+      </div>
+        <div class="container">
+          <div class="background-img">
+            <div class="box">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <div class="content content1" data-alt="喙">
+                <h2>喙部特点
+                  </h2>
+                <p><a>鸟类的喙形态多样，与其食性和生活习性紧密相关。例如，食谷鸟类的喙通常粗厚而有力，适合破开硬壳；而捕食昆虫的小型鸟类喙则纤细尖锐，便于在枝叶间捕食。猛禽如隼和鹰的喙尖锐且呈钩状，适合撕裂猎物。
+                </a></p>
+                <h2>麻雀
+                </h2>
+                <p><a>1.麻雀的喙部短而钝，呈锥形。<br>
+                  2.喙的颜色通常为黑色或深灰色。<br>
+                  3.喙部用于捕食昆虫、采食种子和果实。  <br>                
+                </a></p>
+              </div>
+              <div class="content content2" data-alt="翅膀">
+                <h2>翅膀特点
+                  </h2>
+                <p><a>鸟类的翅膀通常呈流线型，有助于减少飞行时的空气阻力。骨头中央充满气体，减轻了体重，使得鸟类更易于飞翔。不同种类的鸟翅膀形态各异，反映了它们不同的飞行习性和生活环境适应性
+                </a></p>
+                <h2>麻雀
+                </h2>
+                <p><a>1.麻雀的翅膀呈褐色，具有黑色和白色的斑纹。<br>
+                  2.翅膀是麻雀飞行的关键部位，使其能够在空中灵活飞翔。<br>                                
+                </a></p>
+              </div> 
+              <div class="content content3" data-alt="胸">
+                <h2>习性
+                  </h2>
+                <p><a>中国鸟类的习性多样，从栖息地选择到食物来源，都反映了它们对环境的适应。例如，一些鸟类偏爱森林环境，而有的则适应在水域中觅食。鸟类的社群行为也各不相同，有的鸟类独居，有的则形成大群集体活动。
+                </a></p>
+                <h2>麻雀
+                </h2>1.其分布相当广泛，除极寒冷的南北极和高山荒漠，在世界各地均有分布。<br>
+                2.麻雀喜欢栖息在有人类生活的各种生境。适应力强，性活泼，常集群活动。<br>
+                3.麻雀的关节无法弯曲，因而只能采用跳跃的方式。
+              </div>
+              <div class="content content4" data-alt="足">
+                <h2>脚部特点</h2>
+                <p><a>大多数鸟类的脚部结构与其生活环境和行为习性密切相关。例如，涉禽类的脚通常细长，适合在泥滩中寻找食物；而猛禽类则有强壮有力的爪，适合捕捉猎物。鸟类的脚部通常不怕冷，
+                  因为它们的动脉和静脉紧密交错，形成了一种“逆流热交换”机制，有助于保持脚部温度。</a></p>
+                  <h2>麻雀
+                  </h2>
+                  <p><a>1.麻雀的脚部呈粉红色，具有三趾前掌和一趾后掌的特点。<br>
+                    2.这些脚部结构使麻雀能够在地面上行走、跳跃和抓住树枝。<br>                    
+                  </a></p>
+              </div> 
+              <div class="content content5" data-alt="尾">
+                <h2>尾部特点
+                  </h2>
+                <p><a>鸟类的尾部通常用于平衡和操控飞行方向。一些鸟类如雀形目的鸟类，尾部较长，有助于在森林环境中灵活飞行。而一些原始鸟类的尾羽则具有独特的形态特征，如加粗的羽轴
+                </a></p>
+                <h2>麻雀
+                </h2>
+                <p><a> 1.麻雀的尾部相对较短，呈锯齿状。<br>
+                  2.尾部的颜色与翅膀相似，通常为褐色。
+              </div>
+            </div>
+            <img class="img1" src="images/右滑2.png" alt="滚动到底部" width="50" height="50" style="opacity: 0.8" />
+            <img class="img2" src="images/左滑2.png" alt="滚动到底部" width="50" height="50" style="opacity: 0.8" />
+          </div>
+        </div>
+      </section>
+      <script>
+        /*
+        var areas = document.querySelectorAll('area'); // 获取所有的 <area> 元素
+        var boxes = document.querySelectorAll('.content'); // 获取所有的 .content 元素
+      boxes.forEach(function(box){
+        if (box.getAttribute('data-alt') === "喙") { // 检查当前 .content 元素的 data-alt 属性值是否与点击的 alt 属性值匹配
+                box.style.display = 'block'; // 显示匹配的 .content 元素
+              } else {
+                box.style.display = 'none'; // 隐藏其他的 .content 元素
+              }
+      });
+        // 给每个 <area> 元素添加点击事件监听器
+        areas.forEach(function(area) {
+          area.addEventListener('click', function() {
+            var alt = this.getAttribute('alt'); // 获取点击的 <area> 元素的 alt 属性值
+            
+            // 遍历所有的 .content 元素
+            boxes.forEach(function(box) {
+              if (box.getAttribute('data-alt') === alt) { // 检查当前 .content 元素的 data-alt 属性值是否与点击的 alt 属性值匹配
+                box.style.display = 'block'; // 显示匹配的 .content 元素
+              } else {
+                box.style.display = 'none'; // 隐藏其他的 .content 元素
+              }
+            });
+          });
+        });
+        */
+       //点击图片切换
+       var box1=document.querySelector('.content1');
+       var box2=document.querySelector('.content2');
+       var box3=document.querySelector('.content3');
+       var box4=document.querySelector('.content4');
+       var box5=document.querySelector('.content5');
+       var a1=document.querySelector('.area1');
+       var a2=document.querySelector('.area2');
+       var a3=document.querySelector('.area3');
+       var a4=document.querySelector('.area4');
+       var a5=document.querySelector('.area5');
+       var a6=document.querySelector('.area6');
+       var a7=document.querySelector('.area7');
+       a1.addEventListener('click',function(){
+        Clear();
+        box1.style.display='block';
+        index=1;
+       })
+       a2.addEventListener('click',function(){
+        Clear();
+        box2.style.display='block';
+        index=2;
+       })
+       a3.addEventListener('click',function(){
+        Clear();
+        box4.style.display='block';
+        index=4;
+       })
+       a4.addEventListener('click',function(){
+        Clear();
+        box4.style.display='block';
+        index=4;
+       })
+       a5.addEventListener('click',function(){
+        Clear();
+        box3.style.display='block';
+        index=3;
+       })
+       a6.addEventListener('click',function(){
+        Clear();
+        box3.style.display='block';
+        index=3;
+       })
+       a7.addEventListener('click',function(){
+        Clear();
+        box5.style.display='block';
+        index=5;
+       })
+        //切换按钮
+        var left=document.querySelector('.img2'); 
+        var right=document.querySelector('.img1');
+        right.addEventListener('click', function() {
+    if (index === 1) {
+      Clear();
+      box2.style.display = "block";
+      index = 2;
+    } else if (index === 2) {
+      Clear();
+      box3.style.display = "block";
+      index = 3;
+    }else if (index === 3) {
+      Clear();
+      box4.style.display = "block";
+      index = 4;
+    }else if (index === 4) {
+      Clear();
+      box5.style.display = "block";
+      index = 5;
+    }else if (index === 5) {
+      Clear();
+      box1.style.display = "block";
+      index = 1;
+    }
+  });
+  left.addEventListener('click', function() {
+    if (index === 1) {
+      Clear();
+      box5.style.display = "block";
+      index = 5;
+    } else if (index === 2) {
+      Clear();
+      box1.style.display = "block";
+      index = 1;
+    }else if (index === 3) {
+      Clear();
+      box2.style.display = "block";
+      index = 2;
+    }else if (index === 4) {
+      Clear();
+      box3.style.display = "block";
+      index = 3;
+    }else if (index === 5) {
+      Clear();
+      box4.style.display = "block";
+      index = 4;
+    }
+  });
+  function Clear(){
+    box1.style.display='none';
+    box2.style.display='none';
+    box3.style.display='none';
+    box4.style.display='none';
+    box5.style.display='none';
+  }
+      </script>
+</body>
+</html>

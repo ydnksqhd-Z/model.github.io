@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width,initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var index=1;
+    </script>
+    <style>
+        button.active{
+            color:#fff;
+            background-color: orangered;
+        }
+    canvas {
+      background: url("./images/自然风景2.jpeg");
+    }
+    </style>
+</head>
+<body>
+    <canvas id="c1" width="1450" height="750"></canvas>
+    <hr>
+    <button id="boldBtn" type="button">粗线条</button>
+    <button id="thinBtn" type="button">细线条</button>
+    <button id="bolder"  type="button">加粗</button>
+    <button id="thiner"  type="button">变细</button>
+<!--    <button id="saveBtn" type="button">保存</button>  -->
+    <input type="color"  name="" id="color" value="" />
+    <button id="clearBtn" type="button">橡皮擦</button>
+    <button id="changeBackground" type="button">更换背景</button>
+    <button id="nullBtn" type="button">清空画布</button>
+
+    <script>
+        //获取canvas画布和绘制上下文对象
+        var myCanvas=document.querySelector('#c1');
+        var ctx=myCanvas.getContext('2d');
+        //连接处圆润
+        ctx.lineJoin='round';
+        //开端和结束段圆润
+        ctx.lineCap='round';
+        //画笔
+        var boldBtn=document.querySelector('#boldBtn');
+        var thinBtn=document.querySelector('#thinBtn');
+        var inputColor=document.querySelector('#color');
+        var bolder=document.querySelector('#bolder');
+        var thiner=document.querySelector('#thiner');
+        //保存签名
+        var saveBtn=document.querySelector('#saveBtn');
+        //橡皮擦
+        var clearBtn=document.querySelector('#clearBtn');
+        //清空按钮
+        var nullBtn=document.querySelector('#nullBtn');
+        var changeBackground=document.querySelector('#changeBackground');
+
+        //设置控制事件
+        var isDraw=false;
+        myCanvas.onmousedown=function(){
+            isDraw=true;
+            ctx.beginPath();
+            var x=event.pageX-myCanvas.offsetLeft;
+            var y=event.pageY-myCanvas.offsetTop;
+            ctx.moveTo(x,y);
+        }
+        myCanvas.onmouseleave=function(){
+            isDraw=false;
+            ctx.closePath();
+        }
+        myCanvas.onmouseup=function(){
+            isDraw=false;
+            ctx.closePath();
+        }
+        myCanvas.onmousemove=function(){
+            if(isDraw){
+                var x=event.pageX-myCanvas.offsetLeft;
+                var y=event.pageY-myCanvas.offsetTop;
+                ctx.lineTo(x,y);
+                ctx.stroke();
+            }
+        }
+        //设置按钮
+        boldBtn.onclick=function(){
+            ctx.globalCompositeOperation='source-over';
+            ctx.lineWidth=20;
+            boldBtn.classList.add('active');
+            thinBtn.classList.remove('active');
+            clearBtn.classList.remove('active');
+        }
+
+        thinBtn.onclick=function(){
+            ctx.globalCompositeOperation='source-over';
+            ctx.lineWidth=2;
+            boldBtn.classList.remove('active');
+            thinBtn.classList.add('active');
+            clearBtn.classList.remove('active');
+        }
+        bolder.onclick=function(){
+            ctx.lineWidth=ctx.lineWidth+1;
+            boldBtn.classList.remove('active');
+            thinBtn.classList.remove('active');
+            clearBtn.classList.remove('active');
+        }
+        changeBackground.onclick=function(){
+            //更新界面
+            if(index==1){
+            myCanvas.style.backgroundImage="url('./images/自然风景3.jpeg')";
+            index=2;
+        }
+            else if(index==2){
+                myCanvas.style.backgroundImage="url('./images/自然风景4.jpeg')";
+                index=3;
+            }
+            else if(index==3){
+                myCanvas.style.backgroundImage="url('./images/自然风景5.jpeg')";
+                index=4;
+            }
+            else if(index==4){
+                myCanvas.style.backgroundImage="url('./images/自然风景6.jpeg')";
+                index=5;
+            }
+            else if(index==5){
+                myCanvas.style.backgroundImage="url('./images/自然风景2.jpeg')";
+                index=1;
+            }
+        }
+
+        thiner.onclick=function(){
+            ctx.lineWidth-=1;
+            boldBtn.classList.remove('active');
+            thinBtn.classList.remove('active');
+            clearBtn.classList.remove('active');
+        }
+        clearBtn.onclick=function(){
+            ctx.globalCompositeOperation='destination-out';
+            ctx.lineWidth=30;
+            boldBtn.classList.remove('active');
+            thinBtn.classList.remove('active');
+            clearBtn.classList.add('active');
+        }
+        nullBtn.onclick=function(){
+            ctx.clearRect(0,0,1800,800);
+            if(index==2){
+                myCanvas.style.backgroundImage="url('./images/自然风景3.jpeg')";
+            }
+            else if(index==3){
+                myCanvas.style.backgroundImage="url('./images/自然风景4.jpeg')";
+            }
+            else if(index==4){
+                myCanvas.style.backgroundImage="url('./images/自然风景5.jpeg')";
+            }
+            else if(index==5){
+                myCanvas.style.backgroundImage="url('./images/自然风景6.jpeg')";
+            }
+            else if(index==1){
+                myCanvas.style.backgroundImage="url('./images/自然风景2.jpeg')";
+            }
+        }
+        saveBtn.onclick = function () {
+            var urlData=myCanvas.toDataURL();
+            var downloadA = document.createElement('a');
+            downloadA.setAttribute('download','你的绘画');
+            downloadA.href=urlData;
+            downloadA.click();
+        };
+
+        inputColor.onchange = function(){
+            ctx.strokeStyle=inputColor.value;
+        }
+    </script>
+</body>
+</html>
